@@ -124,3 +124,6 @@ A ClientLib will consist of the following files and directories:
 The project comes with the auto-public repository configured. To setup the repository in your Maven settings, refer to:
 
     http://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html
+
+mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate -DarchetypeGroupId=com.adobe.aem   -DarchetypeArtifactId=aem-project-archetype  -DarchetypeVersion=40  -DaemVersion=6.5.21   -DappTitle="My project"   -DappId="myproject"  -DgroupId="com.aem.myproject" -DfrontModule=react  -DincludeDispatcherConfig=n  -DsingleCountry=n  -Dversion=0.0.1-SNAPSHOT
+
