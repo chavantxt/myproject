@@ -120,12 +120,7 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.aem.myproject</groupId>
-            <artifactId>myproject.ui.frontend</artifactId>
-            <version>${project.version}</version>
-            <type>zip</type>
-        </dependency>
+      
 
 
         <dependency>
