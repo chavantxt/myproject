@@ -10,7 +10,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const SOURCE_ROOT = __dirname + '/src/main/webpack';
 
 const resolve = {
-    extensions: ['.js', '.ts'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     plugins: [new TSConfigPathsPlugin({
         configFile: './tsconfig.json'
     })]
@@ -25,6 +25,8 @@ module.exports = {
         filename: (chunkData) => {
             return chunkData.chunk.name === 'dependencies' ? 'clientlib-dependencies/[name].js' : 'clientlib-site/[name].js';
         },
+        chunkFilename: 'clientlib-chunks/resources/chunks/[name].[chunkhash].chunk.js',
+        publicPath: `/etc.clientlibs/myproject/clientlibs/`,
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -74,13 +76,25 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: ["@babel/preset-react"],
+                        }
+                    }
+                ]
             }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new ESLintPlugin({
-            extensions: ['js', 'ts', 'tsx']
+            extensions:['js', 'jsx', 'ts', 'tsx']
         }),
         new MiniCssExtractPlugin({
             filename: 'clientlib-[name]/[name].css'
