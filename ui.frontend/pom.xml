@@ -99,6 +99,8 @@
                                 </goals>
                                 <configuration>
                                     <arguments>run dev</arguments>
+ 		                    <nodeVersion>v16.20.0</nodeVersion>
+                                    <npmVersion>8.19.4</npmVersion>
                                 </configuration>
                             </execution>
                         </executions>
